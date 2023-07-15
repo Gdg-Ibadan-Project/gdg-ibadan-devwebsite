@@ -3,9 +3,11 @@ import React from 'react'
 import bgImage from '../../../assets/hero-bg.svg'
 import location from '../../../assets/location.svg'
 import { Search2Icon } from '@chakra-ui/icons'
+import {Zoom, Fade, Slide, Bounce} from 'react-reveal'
 
 const Hero = () => {
   return (
+    <Zoom>
     <Box 
         w='90%' 
         mx='auto' 
@@ -19,12 +21,17 @@ const Hero = () => {
         backgroundSize='contain'
         position='relative'
     >
-        <HeadingText />
-        <FilterInputs/>
-        <Box w='80%' position='absolute' mx='auto' inset='0' top={['600px', '430px']}>
+        <Bounce><HeadingText /></Bounce>
+        <Slide top>
+            <FilterInputs />
+        </Slide>
+        <Slide left>
+            <Box w='80%' position='absolute' mx='auto' inset='0' top={['600px', '430px']}>
             <Text color='#6A7C88'>Popular: UI Designer , UX Researcher, Andriod, Admin</Text>
-        </Box>
+            </Box>
+        </Slide>
     </Box> 
+    </Zoom>
   )
 }
 

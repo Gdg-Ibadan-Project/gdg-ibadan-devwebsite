@@ -1,5 +1,5 @@
 "use client";
-import React, {useRef, useEffect} from "react";
+import React, { useRef, useEffect } from "react";
 import {
   Box,
   Button,
@@ -24,64 +24,10 @@ import Testing from "../../components/testing";
 import Design1 from "../../assets/Frame 1000004323.png";
 import Design2 from "../../assets/Frame 1000004323 (1).png";
 import Design3 from "../../assets/Image.png";
-import {motion, useAnimation} from 'framer-motion'
+import { Fade, Zoom, Slide, Bounce, } from 'react-reveal'
+import Jump from 'react-reveal/Jump'
 
 const Blog = () => {
-
-  const headingRef = useRef(null);
-  const paragraphRef = useRef(null);
-  const imageRef = useRef(null);
-  const cardRef = useRef(null);
-  const cardControls = useAnimation();
-
-  const headingControls = useAnimation();
-  const paragraphControls = useAnimation();
-  const imageControls = useAnimation();
-
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5, // Adjust this threshold as needed
-    };
-
-    const handleIntersection = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          headingControls.start({ opacity: 1, y: 0 });
-          paragraphControls.start({ opacity: 1, y: 0 });
-          imageControls.start({ opacity: 1, scale: 1 });
-          cardControls.start({ scale: 1.05 });
-        } else {
-          headingControls.start({ opacity: 0, y: -20 });
-          paragraphControls.start({ opacity: 0, y: 20 });
-          imageControls.start({ opacity: 0, scale: 0.8 });
-          cardControls.start({ scale: 1 });
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(handleIntersection, observerOptions);
-
-    if (headingRef.current) {
-      observer.observe(headingRef.current);
-    }
-    if (paragraphRef.current) {
-      observer.observe(paragraphRef.current);
-    }
-
-    if (imageRef.current) {
-      observer.observe(imageRef.current);
-    }
-
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [headingControls, paragraphControls, imageControls, cardControls]);
 
   return (
     <>
@@ -91,60 +37,56 @@ const Blog = () => {
         height="auto"
         mt='7'
       >
-        <Box>
-          <motion.div
-          >
-          <Image
-            src={BlogImage}
-            alt={""}
-            objectFit='cover'
-            borderRadius='24px'
-            w='100%'
-            h={{base: '550px', lg: '100%'}}
-          />
-          </motion.div>
-        </Box>
+        <Zoom>
+          <Box>
+            <Image
+              src={BlogImage}
+              alt={""}
+              objectFit='cover'
+              borderRadius='24px'
+              w='100%'
+              h={{ base: '550px', lg: '100%' }}
+            />
+          </Box>
+        </Zoom>
       </Box>
 
       <Box w='80%' mx='auto' my='16'>
         <Flex alignItems='center' justifyContent='space-between' flexWrap='wrap'>
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.7 }}
-            ref={headingRef}
-            animate={headingControls}
-          >
-          <Heading mb='4'>Latest News</Heading>
-          </motion.h1>
+          <Bounce>
+            <Heading mb='4'>Latest News</Heading>
+          </Bounce>
 
-          <Box
-            display="flex"
-            columnGap="20px"
-            alignItems="center"
-            color="#213C4E"
-          >
-            <ChevronLeftIcon />
-            <Box display='flex' alignItems='center' gap={4} w={{base: '250px', lg: 'auto'}} overflow='auto'>
-              <Text>Business</Text>
-              <Text>Design</Text>
-              <Text>Development</Text>
-              <Text>Tech</Text>
-              <Text>Development</Text>
-              <Text>Branding</Text></Box>
-            <ChevronRightIcon />
-          </Box>
+          <Slide right>
+            <Box
+              display="flex"
+              columnGap="20px"
+              alignItems="center"
+              color="#213C4E"
+            >
+              <ChevronLeftIcon />
+              <Box display='flex' alignItems='center' gap={4} w={{ base: '250px', lg: 'auto' }} overflow='auto'>
+                <Text>Business</Text>
+                <Text>Design</Text>
+                <Text>Development</Text>
+                <Text>Tech</Text>
+                <Text>Development</Text>
+                <Text>Branding</Text></Box>
+              <ChevronRightIcon />
+            </Box>
+          </Slide>
         </Flex>
       </Box>
 
       <Stack
-        alignItems={{base: 'center', lg: 'flex-start'}}
-        justifyContent={{base: 'center', lg: 'space-between'}}
+        alignItems={{ base: 'center', lg: 'flex-start' }}
+        justifyContent={{ base: 'center', lg: 'space-between' }}
         w='80%'
         mx='auto'
         my='8'
-        direction={{base: 'column-reverse', lg: 'row'}}
+        direction={{ base: 'column-reverse', lg: 'row' }}
       >
-        <Box my={{base: '10', lg: 0}} w={{base: '100%', lg: '65%'}}>
+        <Box my={{ base: '10', lg: 0 }} w={{ base: '100%', lg: '65%' }}>
           <SinglePost />
           <SinglePost />
           <SinglePost />
@@ -154,26 +96,23 @@ const Blog = () => {
           <SinglePost />
         </Box>
 
-        <Box mb='8' w={{base: '100%', lg: '28%'}}>
+        <Box mb='8' w={{ base: '100%', lg: '28%' }}>
           <Box>
-            <InputGroup>
-              <InputLeftElement
-                pointerEvents="none"
-                children={<SearchIcon color="gray.300" />}
-              />
-              <Input placeholder="Search..." borderRadius="24px" />
-            </InputGroup>
+            <Zoom>
+              <InputGroup>
+                <InputLeftElement
+                  pointerEvents="none"
+                  children={<SearchIcon color="gray.300" />}
+                />
+                <Input placeholder="Search..." borderRadius="24px" />
+              </InputGroup>
+            </Zoom>
 
-            <motion.h1
-              initial={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.7 }}
-              ref={headingRef}
-              animate={headingControls}
-            >
-            <Heading fontSize={22} fontWeight='medium' my='8'>
-              Recent Posts
-            </Heading>
-            </motion.h1>
+            <Slide right>
+              <Heading fontSize={22} fontWeight='medium' my='8'>
+                Recent Posts
+              </Heading>
+            </Slide>
 
             <Box
               display="flex"
@@ -182,84 +121,18 @@ const Blog = () => {
               border="none"
               pb="42px"
             >
-              <motion.img
-                ref={imageRef}
-                src={Design1}
-                alt="Your Image"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={imageControls}
-                transition={{ duration: 0.8 }}
-                style={{ objectFit: 'cover', borderRadius: 10 }}
-                height='100px'
-                width='100px'
-              />              
-
+             <Slide top>
+                <Image
+                  src={Design1}
+                  alt="Your Image"
+                  style={{ objectFit: 'cover', borderRadius: 10 }}
+                  height='100px'
+                  width='100px'
+                />
+             </Slide>
               <Box alignSelf="center">
                 <Box>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                    ref={paragraphRef}
-                    animate={paragraphControls}
-                  >
-                  <Text
-                    fontSize="15px"
-                    lineHeight="24px"
-                    fontWeight="400"
-                    color="#6A7C88"
-                    mb='3'
-                  >
-                    Design . Jan 2, 2023
-                  </Text>
-                  </motion.p>
-
-                  <motion.h1
-                    initial={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.7 }}
-                    ref={headingRef}
-                    animate={headingControls}
-                  >
-                  <Heading
-                    fontSize="15px"
-                    lineHeight="24px"
-                    fontWeight="500"
-                    width="154px"
-                  >
-                    Inspiration for Content Creating
-                  </Heading>
-                  </motion.h1>
-                </Box>
-              </Box>
-            </Box>
-
-
-            <Box
-              display="flex"
-              overflow="hidden"
-              columnGap="30px"
-              border="none"
-              pb="42px"
-            >
-              <motion.img
-                ref={imageRef}
-                src={Design2}
-                alt="Your Image"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={imageControls}
-                transition={{ duration: 0.8 }}
-                style={{ objectFit: 'cover', borderRadius: 10 }}
-                height='100px'
-                width='100px'
-              />
-
-              <Box alignSelf="center">
-                <Box>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                    ref={paragraphRef}
-                    animate={paragraphControls}
-                  >
+                 <Slide right>
                     <Text
                       fontSize="15px"
                       lineHeight="24px"
@@ -269,14 +142,9 @@ const Blog = () => {
                     >
                       Design . Jan 2, 2023
                     </Text>
-                  </motion.p>
+                 </Slide>
 
-                  <motion.h1
-                    initial={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.7 }}
-                    ref={headingRef}
-                    animate={headingControls}
-                  >
+                  <Bounce>
                     <Heading
                       fontSize="15px"
                       lineHeight="24px"
@@ -285,11 +153,57 @@ const Blog = () => {
                     >
                       Inspiration for Content Creating
                     </Heading>
-                  </motion.h1>
+                  </Bounce>
                 </Box>
               </Box>
             </Box>
 
+
+            <Box
+              display="flex"
+              overflow="hidden"
+              columnGap="30px"
+              border="none"
+              pb="42px"
+            >
+              <Slide top>
+                <Image
+                  src={Design2}
+                  alt="Your Image"
+                  style={{ objectFit: 'cover', borderRadius: 10 }}
+                  height='100px'
+                  width='100px'
+                />
+              </Slide>
+              <Box alignSelf="center">
+                <Box>
+                  <Slide right>
+                    <Text
+                      fontSize="15px"
+                      lineHeight="24px"
+                      fontWeight="400"
+                      color="#6A7C88"
+                      mb='3'
+                    >
+                      Design . Jan 2, 2023
+                    </Text>
+                  </Slide>
+
+                  <Bounce>
+                    <Heading
+                      fontSize="15px"
+                      lineHeight="24px"
+                      fontWeight="500"
+                      width="154px"
+                    >
+                      Inspiration for Content Creating
+                    </Heading>
+                  </Bounce>
+                </Box>
+              </Box>
+            </Box>
+
+            
 
             <Heading
               fontSize="22px"
@@ -311,13 +225,6 @@ const Blog = () => {
                   Brand
                 </Button>
 
-                <motion.button
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  transition={{ duration: 0.2 }}
-                >
                 <Button
                   color="#4D6371"
                   backgroundColor="#fff"
@@ -326,7 +233,6 @@ const Blog = () => {
                 >
                   Development
                 </Button>
-                </motion.button>
 
                 <Button
                   color="#4D6371"
@@ -356,13 +262,6 @@ const Blog = () => {
                   AR/VR
                 </Button>
 
-                <motion.button
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  transition={{ duration: 0.2 }}
-                >
                 <Button
                   color="#4D6371"
                   backgroundColor="#fff"
@@ -371,7 +270,6 @@ const Blog = () => {
                 >
                   Startup
                 </Button>
-                </motion.button>
               </Flex>
 
               <Flex columnGap="15px">
@@ -392,13 +290,6 @@ const Blog = () => {
                   Business
                 </Button>
 
-                <motion.button
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  transition={{ duration: 0.2 }}
-                >
                 <Button
                   color="#4D6371"
                   backgroundColor="#fff"
@@ -407,7 +298,6 @@ const Blog = () => {
                 >
                   Brand
                 </Button>
-                </motion.button>
               </Flex>
             </Box>
 
@@ -424,112 +314,43 @@ export default Blog;
 
 export const SinglePost = () => {
 
-  const headingRef = useRef(null);
-  const paragraphRef = useRef(null);
-  const imageRef = useRef(null);
-  const cardRef = useRef(null);
-  const cardControls = useAnimation();
-
-  const headingControls = useAnimation();
-  const paragraphControls = useAnimation();
-  const imageControls = useAnimation();
-
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5, // Adjust this threshold as needed
-    };
-
-    const handleIntersection = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          headingControls.start({ opacity: 1, y: 0 });
-          paragraphControls.start({ opacity: 1, y: 0 });
-          imageControls.start({ opacity: 1, scale: 1 });
-          cardControls.start({ scale: 1.05 });
-        } else {
-          headingControls.start({ opacity: 0, y: -20 });
-          paragraphControls.start({ opacity: 0, y: 20 });
-          imageControls.start({ opacity: 0, scale: 0.8 });
-          cardControls.start({ scale: 1 });
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(handleIntersection, observerOptions);
-
-    if (headingRef.current) {
-      observer.observe(headingRef.current);
-    }
-    if (paragraphRef.current) {
-      observer.observe(paragraphRef.current);
-    }
-
-    if (imageRef.current) {
-      observer.observe(imageRef.current);
-    }
-
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [headingControls, paragraphControls, imageControls, cardControls]);
-
-
   return (
-    <Box w='100%' mb='16'> 
-      <Stack direction={{base: 'column', lg: 'row'}} justifyContent='space-between' alignItems={{base: 'flex-start', lg: 'center'}}>
+    <Box w='100%' mb='16'>
+      <Stack direction={{ base: 'column', lg: 'row' }} justifyContent='space-between' alignItems={{ base: 'flex-start', lg: 'center' }}>
         <Box w={{ base: '100%', lg: '65%' }} mb='4'>
-          <Box bg='#FCEFEA' py='1.5' px='3.5' borderRadius='85px' w='100px'><Text color='#E05D2F' fontSize={14} fontWeight='medium'>QA Testing</Text></Box>
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.7 }}
-            ref={headingRef}
-            animate={headingControls}
-          >
-              <Heading my='3.5' fontSize={22} color='#1E3747'>The Best Productivity Apps for 2021 - Updated List</Heading>
-          </motion.h1>
-          <Box w='100%' border='1px dashed #BAC3C8' my='3'></Box>
+          <Fade top>
+            <Box bg='#FCEFEA' py='1.5' px='3.5' borderRadius='85px' w='100px'><Text color='#E05D2F' fontSize={14} fontWeight='medium'>QA Testing</Text></Box>
+          </Fade>
+          <Slide left>
+            <Heading my='3.5' fontSize={22} color='#1E3747'>The Best Productivity Apps for 2021 - Updated List</Heading>
+          </Slide>
+          <Bounce>
+            <Box w='100%' border='1px dashed #BAC3C8' my='3'></Box>
+          </Bounce>
 
-          <Stack direction='row' alignItems='center' gap={2}>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              ref={paragraphRef}
-              animate={paragraphControls}
-            >
-            <Text color='#6A7C88' fontSize={14}>May 02, 2022</Text>
-            </motion.p>
-            <Box w='6.5px' h='6.5px' borderRadius='50%' bg='#E05D2F'></Box>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              ref={paragraphRef}
-              animate={paragraphControls}
-            >
-            <Text color='#6A7C88' fontSize={14}>Nattasha</Text>
-            </motion.p>
-          </Stack>
-          
+         <Bounce>
+            <Stack direction='row' alignItems='center' gap={2}>
+              <Text color='#6A7C88' fontSize={14}>May 02, 2022</Text>
+
+              <Box w='6.5px' h='6.5px' borderRadius='50%' bg='#E05D2F'></Box>
+              <Text color='#6A7C88' fontSize={14}>Nattasha</Text>
+            </Stack>
+         </Bounce>
+
         </Box>
-        <Box w={{base: '80%', lg: '30%'}}>
-          <motion.img
-            ref={imageRef}
+
+        <Box w={{ base: '80%', lg: '30%' }}>
+          <Zoom>
+          <Image
             src={Design3}
             alt="Your Image"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={imageControls}
-            transition={{ duration: 0.8 }}
-            style={{objectFit: 'cover', borderRadius: 10}}
+            style={{ objectFit: 'cover', borderRadius: 10 }}
             height='155px'
             width='100%'
           />
-          {/* <Image src={Design3} h='155px' objectFit='cover' w='100%' borderRadius={10} /> */}
+          </Zoom>
         </Box>
+
       </Stack>
     </Box>
   )

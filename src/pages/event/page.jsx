@@ -20,6 +20,8 @@ import Buttons from "../../components/buttons";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { BeatLoader } from "react-spinners";
 import {data} from '../../components/data/data'
+import Reveal from 'react-reveal/Reveal';
+import {Zoom, Fade, Bounce, Jump} from 'react-reveal'
 
 const Event = () => {
   
@@ -32,6 +34,7 @@ const Event = () => {
         mx='auto'
         position="relative"
       >
+       <Zoom>
         <Box height={{ base: "732px", lg: '100%' }}>
           <Image
             src={EventImg}
@@ -39,20 +42,23 @@ const Event = () => {
             style={{ borderRadius: "24px", objectFit: "cover", height: "100%" }}
           />
         </Box>
+        </Zoom>
       </Box>
 
       <Box position="absolute" top="30rem" bottom="0rem">
         <Image src={Group} alt={""} />
       </Box>
+      <Bounce>
       <Text
         my='10'
         textAlign="center"
-        fontSize={{ base: "32px", lg: "45px" }}
+        fontSize={{ base: "32px", lg: "42px" }}
         fontWeight="500"
         lineHeight={{ base: "40px", lg: "57px" }}
       >
         Upcoming Events
       </Text>
+      </Bounce>
       <Box
         w='80%'
         mx='auto'
@@ -70,9 +76,9 @@ const Event = () => {
           mb='5'
           flexWrap={{ base: 'wrap', lg: 'nowrap' }}
         >
-          <Input placeholder="Date" w={{ base: '100%', lg: '200px' }} />
-          <Input placeholder="Keyword" w={{ base: '100%', lg: '200px' }} />
-          <Button bg='#E05D2F' w={{ base: '100%', lg: '200px' }} h='43px' color='white' boxShadow='md'>Find Event</Button>
+          <Zoom><Input placeholder="Date" w={{ base: '100%', lg: '200px' }} /></Zoom>
+          <Zoom><Input placeholder="Keyword" w={{ base: '100%', lg: '200px' }} /></Zoom>
+          <Zoom><Button bg='#E05D2F' w={{ base: '100%', lg: '200px' }} h='43px' color='white' boxShadow='md'>Find Event</Button></Zoom>
         </Flex>
         <Flex
           columnGap={{ base: "45px", lg: "179px" }}
@@ -81,6 +87,7 @@ const Event = () => {
           fontWeight="500"
         >
 
+          <Zoom>
           <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />} fontSize={15}>
               Upcoming Events
@@ -94,6 +101,7 @@ const Event = () => {
               </MenuItem>
             </MenuList>
           </Menu>
+          </Zoom>
         </Flex>
       </Box>
 
@@ -104,7 +112,7 @@ const Event = () => {
         flexWrap='wrap'
         alignItems='center'
       >
-        {data.map((event, index) => <EventCard key={event.id} id={event.id} />)}
+        {data.map((event, index) => <Bounce><EventCard key={event.id} id={event.id} /></Bounce>)}
       </Flex>
       <Box
         textAlign="center"

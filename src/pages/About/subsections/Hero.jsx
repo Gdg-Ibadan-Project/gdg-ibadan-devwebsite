@@ -9,7 +9,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
-import {motion} from 'framer-motion'
+import {Zoom, Bounce} from 'react-reveal'
+
 
 const Hero = () => {
   return (
@@ -26,16 +27,6 @@ export default Hero
 
 export const Pattern = () => {
 
-    const [isAnimated, setIsAnimated] = useState(false);
-
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            setIsAnimated(true);
-        }, 2500);
-
-        return () => clearTimeout(timeout);
-    }, []);
-
     return (
         <Box w={{ base: '100%', lg: '50%' }} position='relative' mb={{base: '250px'}}>
             <Box>
@@ -44,19 +35,13 @@ export const Pattern = () => {
             <Box position='absolute' top='0'>
                 <Image src={ellipse} style={{ objectFit: 'cover', width: '100%', height: '500px', borderRadius: 24 }} />
             </Box>
-            <motion.div
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{
-                    type: 'spring',
-                    damping: 10,
-                    stiffness: 100,
-                }}
-            >
+            
             <Box color='white' position='absolute' zIndex='1' top="50%" left={{base: '4%', lg: '10%'}}>
+                <Bounce>
                 <Heading fontSize={{base: 42, lg: 45}} lineHeight={{base: '70px', lg: '80px'}}>We strive to create a space that fosters collaboration</Heading>
+                </Bounce>
             </Box>
-            </motion.div>
+            
         </Box>
     )
 }
@@ -64,6 +49,7 @@ export const Pattern = () => {
 export const HeroImage = () => {
     return (
         <Box py='5' px={{ base: 2, lg: '10' }} w={{base: '100%', lg: '50%'}}>
+            <Zoom>
             <Swiper 
                 spaceBetween={30} 
                 centeredSlides={true}
@@ -78,6 +64,7 @@ export const HeroImage = () => {
                 <SwiperSlide><Image src={image1} alt="" style={{ borderRadius: "24px", objectFit: "cover", height: "500px", width: '500px' }} /></SwiperSlide>
                 <SwiperSlide><Image src={image2} alt="" style={{ borderRadius: "24px", objectFit: "cover", height: "500px", width: '500px' }} /></SwiperSlide>
             </Swiper>
+            </Zoom>
         </Box>
     )
 }

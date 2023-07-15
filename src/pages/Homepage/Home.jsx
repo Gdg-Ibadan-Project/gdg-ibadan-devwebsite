@@ -22,7 +22,8 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import { Link } from "react-router-dom";
 import Features from "../../components/Features/Features";
-
+import { Zoom, Slide, Roll } from "react-reveal";
+import Jump from "react-reveal/Jump";
 
 const Home = () => {
   return (
@@ -34,6 +35,7 @@ const Home = () => {
         position="relative"
         mx='auto'
       >
+        <Zoom>
         <Box height={{ base: "650px", lg: "85vh" }}>
           <Swiper spaceBetween={30} centeredSlides={true}
             autoplay={{
@@ -50,7 +52,9 @@ const Home = () => {
             <SwiperSlide><Image src={carousel3} alt="" borderRadius='24px' objectFit='cover' h='100%' w='100%' /></SwiperSlide>
           </Swiper>
         </Box>
+        </Zoom>
 
+        {/* <Zoom> */}
         <Box
           position="absolute"
           zIndex='1'
@@ -64,7 +68,9 @@ const Home = () => {
           alignItems='center'
           justifyContent='center'
         >
+          <Slide top>
           <Box maxW='800px' px={[7, 5, 0]}>
+              
             <Text
               fontSize={{ base: "32px", lg: "42px" }}
               fontWeight="medium"
@@ -80,8 +86,11 @@ const Home = () => {
                 Join Our Community
               </a>
             </Button>
+              
           </Box>
+          </Slide>
         </Box>
+        {/* </Zoom> */}
       </Box>
 
       <Flex
@@ -96,31 +105,35 @@ const Home = () => {
           w={{ base: "100%", lg: "50%" }}
           mb='8'
         >
-          <Heading
-            color="#1E3747"
-            fontWeight="500"
-            fontSize={{ base: "32px", lg: "47px" }}
-            lineHeight={{ base: "40px", lg: "57px" }}
-            pb="38px"
-          >
-            About Us
-          </Heading>
-          <UnorderedList
-            fontSize="16px"
-            fontWeight="500"
-            lineHeight="20px"
-            columnGap="37px"
-            display="flex"
-            mb='5'
-          >
-            <ListItem color="#0F9D58">Connect</ListItem>
-            <ListItem color="#4285F4">Learn</ListItem>
-            <ListItem color="#EA4335">Grow</ListItem>
-          </UnorderedList>
+          <Jump>
+            <Heading
+              color="#1E3747"
+              fontWeight="500"
+              fontSize={{ base: "32px", lg: "47px" }}
+              lineHeight={{ base: "40px", lg: "57px" }}
+              pb="38px"
+            >
+              About Us
+            </Heading>
+          </Jump>
+          <Zoom>
+            <UnorderedList
+              fontSize="16px"
+              fontWeight="500"
+              lineHeight="20px"
+              columnGap="37px"
+              display="flex"
+              mb='5'
+            >
+              <ListItem color="#0F9D58">Connect</ListItem>
+              <ListItem color="#4285F4">Learn</ListItem>
+              <ListItem color="#EA4335">Grow</ListItem>
+            </UnorderedList>
+          </Zoom>
           <Text
             // pt="20px"
             color="#6A7C88"
-            fontSize="20px"
+            fontSize={[18, 20]}
             fontWeight="normal"
             lineHeight="35px"
             mb='7'
@@ -129,17 +142,23 @@ const Home = () => {
             as="p"
           // fontFamily="Google Sans Display, sans-serif"
           >
+            <Slide left>
             We strive to create a space that fosters collaboration and learning
             among tech enthusiasts of all levels. Whether you're a beginner or
             an expert, our community welcomes you.
+            </Slide>
           </Text>
-          <Link to='/about'><Button bg='#E05D2F' w='150px' h={{ base: '43px', lg: '45px' }} color='white' boxShadow='md'>Know More</Button></Link>
+         <Slide left>
+            <Link to='/about'><Button bg='#E05D2F' w='150px' h={{ base: '43px', lg: '45px' }} color='white' boxShadow='md'>Know More</Button></Link>
+         </Slide>
         </Box>
         <Box
           w={{ base: "100%", lg: "50%" }}
           mb='10'
         >
-          <Image src={About} w='100%' h='100%' alt="" objectFit='cover' />
+          <Roll>
+            <Image src={About} w='100%' h='100%' alt="" objectFit='cover' />
+          </Roll>
         </Box>
       </Flex>
 

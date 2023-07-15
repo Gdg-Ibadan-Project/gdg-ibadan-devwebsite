@@ -1,6 +1,8 @@
 import { Box, Select, Heading, Text, Flex, Stack, FormLabel, Image, Button } from '@chakra-ui/react'
 import React from 'react'
 import JobIcon from '../../../assets/single-job-icon.png'
+import {Slide, Bounce, Fade, Zoom} from 'react-reveal'
+import Jump from 'react-reveal/Jump';
 
 const JobCard = () => {
   return (
@@ -38,6 +40,7 @@ export default JobCard
 
 export const Card = () => {
   return (
+  <Slide top>
   <Box w='100%' p={[3, 4]} border='1px solid lightgray' borderRadius={12} mb='7' h='auto'>
       <Stack direction={['column', 'row']} justifyContent='space-between' alignItems={['flex-start', 'center']}>
         <Box w={['20%', '10%']}>
@@ -45,34 +48,44 @@ export const Card = () => {
         </Box>
 
         <Box w='92%'>
-          <Stack direction='column' spacing={4}>
-            <Box>
-              <Stack direction='row' justifyContent='space-between'>
+          <Stack direction={['column', 'row']} w='100%' justifyContent={['center', 'space-between']}>
+            <Box mb={[6, 0]}>
+              <Stack direction='column' spacing={7}>
+
                 <Box>
-                  <Heading fontSize={22} fontWeight='medium' color='#1E3747' mb='3'>Social Media Assistant</Heading>
-                  <Text color='#6A7C88' fontSize={16}>Canva . Ankara, Turkey</Text>
+                  <Jump><Heading fontSize={22} fontWeight='medium' color='#1E3747' mb='3'>Social Media Assistant</Heading></Jump>
+                  <Slide left><Text color='#6A7C88' fontSize={16}>Canva . Ankara, Turkey</Text></Slide>
                 </Box>
 
-                <Button bg='#E05D2F' w='105px' color='white' fontSize={14} boxShadow='md'>Apply</Button>
+                <Box>
+                  <Zoom>
+                      <Stack direction='row' alignItems='center' gap={[2, 3]} justifyContent='space-between'>
+                        <Text bg='#E8F5E9' color='#4CAF50' borderRadius='24px' px='20px' py='6px' border='1px solid #E8F5E9' fontSize={14}>FullTime</Text>
+                        <Box w='1px' h='42px' bg='lightgray'></Box>
+                        <Text color='#FFC107' border='1px solid #FFC107' borderRadius='24px' px='20px' py='6px' fontSize={14}>Marketing</Text>
+                        <Text color='#4285F4' border='1px solid #4285F4' borderRadius='24px' px='20px' py='6px' fontSize={14}>Design</Text>
+                      </Stack>
+                  </Zoom>
+                </Box>
+
               </Stack>
             </Box>
 
-            <Box w='100%' h={['auto', '42px']}>
-              <Stack direction={['column', 'row']} justifyContent={['center', 'space-between']} alignItems='center'>
-                <Box mb='3'>
-                  <Stack direction='row' alignItems='center' gap={[2, 3]} justifyContent='space-between'>
-                    <Text bg='#E8F5E9' color='#4CAF50' borderRadius='24px' px='20px' py='6px' border='1px solid #E8F5E9' fontSize={14}>FullTime</Text>
-                    <Box w='1px' h='42px' bg='lightgray'></Box>
-                    <Text color='#FFC107' border='1px solid #FFC107' borderRadius='24px' px='20px' py='6px' fontSize={14}>Marketing</Text>
-                    <Text color='#4285F4' border='1px solid #4285F4' borderRadius='24px' px='20px' py='6px' fontSize={14}>Design</Text>
-                  </Stack>
-                </Box>
-                <Text color='#1E3747' fontWeight='medium' fontSize={15}>804 Applied</Text>
+            <Box>
+              <Stack direction={['row', 'column']} h='100%' justifyContent='space-between' alignItems='center'>
+                <Zoom>
+                  <Button bg='#E05D2F' w='105px' color='white' fontSize={14} boxShadow='md'>Apply</Button>
+                </Zoom>
+                <Zoom>
+                  <Text color='#1E3747' fontWeight='medium' fontSize={15}>804 Applied</Text>
+                </Zoom>
               </Stack>
             </Box>
+
           </Stack>
         </Box>
       </Stack>
     </Box>
+    </Slide>
   )
 }
