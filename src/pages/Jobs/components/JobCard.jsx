@@ -47,21 +47,21 @@ export const Card = () => {
           <Image src={JobIcon} w='50px' h='50px' />
         </Box>
 
-        <Box w='92%'>
+        <Box w={['100%', '92%']} mx='auto'>
           <Stack direction={['column', 'row']} w='100%' justifyContent={['center', 'space-between']}>
-            <Box mb={[6, 0]}>
-              <Stack direction='column' spacing={7}>
+            <Box mb={[3, 0]}>
+              <Stack direction='column' spacing={5}>
 
                 <Box>
-                  <Jump><Heading fontSize={22} fontWeight='medium' color='#1E3747' mb='3'>Social Media Assistant</Heading></Jump>
+                  <Jump><Heading fontSize={22} fontWeight='medium' color='#1E3747' mb='2.5'>Social Media Assistant</Heading></Jump>
                   <Slide left><Text color='#6A7C88' fontSize={16}>Canva . Ankara, Turkey</Text></Slide>
                 </Box>
 
                 <Box>
                   <Zoom>
-                      <Stack direction='row' alignItems='center' gap={[2, 3]} justifyContent='space-between'>
+                      <Stack direction='row' alignItems='center' justifyContent='space-between'>
                         <Text bg='#E8F5E9' color='#4CAF50' borderRadius='24px' px='20px' py='6px' border='1px solid #E8F5E9' fontSize={14}>FullTime</Text>
-                        <Box w='1px' h='42px' bg='lightgray'></Box>
+                        <Box w='1px' h='42px' bg='lightgray' display={['none', 'block']}></Box>
                         <Text color='#FFC107' border='1px solid #FFC107' borderRadius='24px' px='20px' py='6px' fontSize={14}>Marketing</Text>
                         <Text color='#4285F4' border='1px solid #4285F4' borderRadius='24px' px='20px' py='6px' fontSize={14}>Design</Text>
                       </Stack>
