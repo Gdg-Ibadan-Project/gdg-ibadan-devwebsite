@@ -8,7 +8,7 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
-  Stack, Image, Button, Drawer,
+  Stack, Image, Drawer,
   DrawerBody,
   DrawerFooter,
   DrawerHeader,
@@ -24,6 +24,7 @@ import jobIcon from "../../assets/job-icon.svg";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Link, useLocation } from "react-router-dom";
 import {HamburgerIcon, CloseIcon} from '@chakra-ui/icons'
+import Button from '../Button'
 
 const Navbar = () => {
   const location = useLocation();
@@ -37,7 +38,7 @@ const Navbar = () => {
     <>
     {openModal && <SideNav setOpenModal={setOpenModal} />}
     {location.pathname !== '/signin' && location.pathname !== '/signup' && location.pathname !== '/verification' && 
-   ( <Box py="4" position='sticky' top='0' zIndex='2' bg='white' w='100%' borderBottom='1px solid lightgray'>
+   ( <Box py={[4,0]} position='sticky' top='0' zIndex='2' bg='white' w='100%' borderBottom='1px solid lightgray'>
       <Box w="90%" mx="auto">
         <Flex alignItems="center" justifyContent="space-between">
           <Box>
@@ -85,27 +86,28 @@ const Navbar = () => {
           </Box>
 
           <Box display={{base: 'none', md: 'none', lg: 'block'}}>
-            {location.pathname === "/" ? 
-            (
+            {/* {location.pathname === "/" ?  */}
+            {/* ( */}
               <Link to='/signin'>
-                <Button bg='#E05D2F' w='150px' h='43px' color='white' boxShadow='md'>Register </Button>
+                <Button width='150px' height='43px' text='Register' />
+                {/* <Button bg='#E05D2F' w='150px' h='43px' color='white' boxShadow='md'>Register </Button> */}
               </Link>
-            ) 
-            :
-            <Flex alignItems="center" gap={2}>
-              <Avatar size="sm" name="Oluwafolayemi Anifowose" fontSize={15} />
-              <Menu isLazy color="#1E3747">
-                <MenuButton color="#1E3747" fontWeight="medium" fontSize={15}>
-                  Oluwafolayemi Anifowose <ChevronDownIcon />
-                </MenuButton>
-                <MenuList fontSize={15}>
-                  <MenuItem>Edit Profile</MenuItem>
-                  <MenuItem>Favourites</MenuItem>
-                  <MenuItem>Logout</MenuItem>
-                </MenuList>
-              </Menu>
-              <Text></Text>
-            </Flex>}
+            {/* )  */}
+            {/* : */}
+            {/* // <Flex alignItems="center" gap={2}>
+            //   <Avatar size="sm" name="Oluwafolayemi Anifowose" fontSize={15} />
+            //   <Menu isLazy color="#1E3747">
+            //     <MenuButton color="#1E3747" fontWeight="medium" fontSize={15}>
+            //       Oluwafolayemi Anifowose <ChevronDownIcon />
+            //     </MenuButton>
+            //     <MenuList fontSize={15}>
+            //       <MenuItem>Edit Profile</MenuItem>
+            //       <MenuItem>Favourites</MenuItem>
+            //       <MenuItem>Logout</MenuItem>
+            //     </MenuList>
+            //   </Menu>
+            //   <Text></Text>
+            // </Flex> */}
           </Box>
 
           <Box display={{base: 'block', md: 'block', lg: 'none'}} onClick={showSideNav}>

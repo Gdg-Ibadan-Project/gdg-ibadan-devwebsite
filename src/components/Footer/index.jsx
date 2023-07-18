@@ -6,10 +6,9 @@ import {
   Icon,
   ListItem,
   Text,
-  UnorderedList, Button, Image
+  UnorderedList, Image
 } from "@chakra-ui/react";
 import React, {useRef, useEffect} from "react";
-import Buttons from "../buttons";
 import Logo from "../logo";
 // import { LinkedinIcon, SlackIcon, TwitterIcon } from "../icons";
 import Slack from '../../assets/slack.svg'
@@ -18,6 +17,7 @@ import instagram from '../../assets/instagram-icon.svg'
 import twitter from '../../assets/twitter-logo.svg'
 import { Link, useLocation } from "react-router-dom";
 import {Slide, Fade, Bounce, Zoom} from 'react-reveal'
+import Button from '../Button'
 
 const Footer = () => {
   const location = useLocation();
@@ -62,6 +62,7 @@ const Footer = () => {
                   pl={{ base: "16px", lg: "90px" }}
                   pb={{ base: "0px", lg: "103px" }}
                   pr={{ base: "18px" }}
+                  overflow='hidden'
                 >
                  <Slide top>
                   <Heading
@@ -83,7 +84,8 @@ const Footer = () => {
                   ml={{ base: "17px", lg: "0px" }}
                 >
                   <a href="https://gdg.community.dev/gdg-ibadan/" target='_blank'>
-                    <Button bg='#E05D2F' w='210px' color='white' fontSize={15} h='55px'>Join our community</Button>
+                    <Button width='210px' height='55px' text='Join Our Community' />
+                    {/* <Button bg='#E05D2F' w='210px' color='white' fontSize={15} h='55px'>Join our community</Button> */}
                   </a>
                 </Box>
                 </Zoom>
@@ -229,8 +231,9 @@ const Footer = () => {
               justifyContent="space-between"
               pl={{ base: "32px", lg: "141px" }}
               pr={{ base: "0px", lg: "174px" }}
+              overflow='hidden'
             >
-              <Box mt='8'>
+              <Box mt='8' overflow='hidden'>
                 <Fade top><Link to='/'><Logo /></Link></Fade>
                 <Slide left>
                   <Text

@@ -6,12 +6,13 @@ import {
   Heading,
   ListItem,
   Text,
-  UnorderedList, Image, Button
+  UnorderedList, Image, 
 } from "@chakra-ui/react";
 import Header from "../../assets/gdg-header.jpg";
 import carousel1 from "../../assets/carousel-image2.jpg";
 import carousel2 from "../../assets/carousel-image3.jpg";
 import carousel3 from "../../assets/carousel-image4.jpg";
+import carousel4 from "../../assets/carousel-image5.jpg";
 import About from "../../assets/images asset.png";
 import Organisers from "../../components/organisers";
 import Sponsors from "../../components/sponsors";
@@ -24,6 +25,7 @@ import { Link } from "react-router-dom";
 import Features from "../../components/Features/Features";
 import { Zoom, Slide, Roll } from "react-reveal";
 import Jump from "react-reveal/Jump";
+import Button from '../../components/Button'
 
 const Home = () => {
   return (
@@ -39,7 +41,7 @@ const Home = () => {
         <Box height={{ base: "650px", lg: "85vh" }}>
           <Swiper spaceBetween={30} centeredSlides={true}
             autoplay={{
-              delay: 2500,
+              delay: 4000,
               disableOnInteraction: false,
             }}
             modules={[Autoplay, Pagination, Navigation]}
@@ -50,6 +52,7 @@ const Home = () => {
             <SwiperSlide><Image src={carousel1} alt="" borderRadius='24px' objectFit='cover' h='100%' w='100%' /></SwiperSlide>
             <SwiperSlide><Image src={carousel2} alt="" borderRadius='24px' objectFit='cover' h='100%' w='100%' /></SwiperSlide>
             <SwiperSlide><Image src={carousel3} alt="" borderRadius='24px' objectFit='cover' h='100%' w='100%' /></SwiperSlide>
+            <SwiperSlide><Image src={carousel4} alt="" borderRadius='24px' objectFit='cover' h='100%' w='100%' /></SwiperSlide>
           </Swiper>
         </Box>
         </Zoom>
@@ -81,11 +84,14 @@ const Home = () => {
               Welcome to <span style={{ color: "#E05D2F" }}> GDG Ibadan </span> website, where tech enthusiasts gather to share ideas and knowledge.
             </Text>
 
-            <Button bg='#E05D2F' w='210px' h={{ base: '50px', lg: '55px' }} color='white' boxShadow='md'>
+            <a href='https://gdg.community.dev/gdg-ibadan/' target='_blank'>
+              <Button width='210px' height='55px' color='white' text='Join Our Community' />
+            </a>
+            {/* <Button bg='#E05D2F' w='210px' h={{ base: '50px', lg: '55px' }} color='white' boxShadow='md'>
               <a href='https://gdg.community.dev/gdg-ibadan/' target='_blank'>
                 Join Our Community
               </a>
-            </Button>
+            </Button> */}
               
           </Box>
           </Slide>
@@ -149,7 +155,9 @@ const Home = () => {
             </Slide>
           </Text>
          <Slide left>
-            <Link to='/about'><Button bg='#E05D2F' w='150px' h={{ base: '43px', lg: '45px' }} color='white' boxShadow='md'>Know More</Button></Link>
+            <Link to='/about'>
+              <Button width='150px' height='47px' text='Know More' />
+            </Link>
          </Slide>
         </Box>
         <Box

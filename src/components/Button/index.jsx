@@ -5,13 +5,16 @@ const index = ({bg, color, fontSize, text, fontWeight, width, height}) => {
   return (
     <Box my='3'>
         <Button 
-          bg={bg} 
-          color={color} 
+          bg='#E05D2F' 
+          color='white' 
           fontSize={fontSize} 
           fontWeight={fontWeight} 
           width={width} 
-          height={height}>
-            {text}
+          _hover={{ bg: 'rgba(224, 93, 47, 0.8)'}}
+          height={height}
+          boxShadow='md'
+        >
+          {text}
         </Button>
     </Box>
   )

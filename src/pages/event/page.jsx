@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import React from "react";
 import EventCard from "../../components/eventcard";
 import {
@@ -30,16 +30,19 @@ const Event = () => {
       <Box
         w="90%"
         height="auto"
-        mt='8'
+        mt='5'
         mx='auto'
         position="relative"
       >
        <Zoom>
-        <Box height={{ base: "732px", lg: '100%' }}>
+        <Box height={{ base: "700px", lg: '550px' }}>
           <Image
             src={EventImg}
             alt={""}
-            style={{ borderRadius: "24px", objectFit: "cover", height: "100%" }}
+            w='100%'
+            h='100%'
+            objectFit='cover'
+            borderRadius={12}
           />
         </Box>
         </Zoom>
@@ -67,19 +70,21 @@ const Event = () => {
         mb='12'
         flexWrap='wrap'
       >
-        <Flex
-          fontSize="16px"
-          alignItems='center'
-          fontWeight="400"
-          w={{ base: '100%', lg: '50%' }}
-          gap={6}
-          mb='5'
-          flexWrap={{ base: 'wrap', lg: 'nowrap' }}
-        >
-          <Zoom><Input placeholder="Date" w={{ base: '100%', lg: '200px' }} /></Zoom>
-          <Zoom><Input placeholder="Keyword" w={{ base: '100%', lg: '200px' }} /></Zoom>
-          <Zoom><Button bg='#E05D2F' w={{ base: '100%', lg: '200px' }} h='43px' color='white' boxShadow='md'>Find Event</Button></Zoom>
-        </Flex>
+        {/* <Fade top style={{width: '50%'}}> */}
+          <Flex
+            fontSize="16px"
+            alignItems='center'
+            fontWeight="400"
+            w={{ base: '100%', lg: '50%' }}
+            gap={6}
+            mb='5'
+            flexWrap={{ base: 'wrap', lg: 'nowrap' }}
+          >
+            <Input placeholder="Date" w={{ base: '100%', lg: '200px' }} />
+            <Input placeholder="Keyword" w={{ base: '100%', lg: '200px' }} />
+            <Button bg='#E05D2F' w={{ base: '100%', lg: '200px' }} h='43px' color='white' boxShadow='md'>Find Event</Button>
+          </Flex>
+        {/* </Fade> */}
         <Flex
           columnGap={{ base: "45px", lg: "179px" }}
           fontSize="16px"

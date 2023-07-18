@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Box, Heading } from '@chakra-ui/react'
+import { Box, Heading, Text } from '@chakra-ui/react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Homepage/Home'
 import About from './pages/About'
@@ -20,14 +20,20 @@ import Loader from './components/Loader/Loader'
 function App() {
 
   const [isLoading, setIsLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const images = document.querySelectorAll('img');
+    const images = Array.from(document.querySelectorAll('img'));
+    const totalImages = images.length;
+    console.log(totalImages);
     let loadedCount = 0;
 
     const handleImageLoad = () => {
       loadedCount++;
-      if (loadedCount === images.length) {
+      const progressPercentage = Math.round((loadedCount / totalImages) * 100);
+      setProgress(progressPercentage);
+
+      if (loadedCount === totalImages) {
         setIsLoading(false);
       }
     };
@@ -48,7 +54,7 @@ function App() {
   }, []);
 
   if (isLoading) {
-    return <Loader />;
+    return <Loader progress={progress} />;
   }
   
   return (
