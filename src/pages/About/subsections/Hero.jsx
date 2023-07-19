@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Box, Flex, Heading, Stack, Image} from '@chakra-ui/react'
 import ellipse from '../../../assets/ellipse.svg'
 import pattern from '../../../assets/patterns.svg'
@@ -9,11 +9,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
+import {Zoom, Bounce} from 'react-reveal'
+
 
 const Hero = () => {
   return (
     <Box w='100%' position='relative'>
-        <Stack justifyContent='space-between' direction={{base: 'column', lg: 'row'}}>
+        <Stack justifyContent='space-between' direction={{base: 'column', lg: 'row'}} >
             <Pattern />
             <HeroImage />
         </Stack>
@@ -24,6 +26,7 @@ const Hero = () => {
 export default Hero
 
 export const Pattern = () => {
+
     return (
         <Box w={{ base: '100%', lg: '50%' }} position='relative' mb={{base: '250px'}}>
             <Box>
@@ -32,9 +35,13 @@ export const Pattern = () => {
             <Box position='absolute' top='0'>
                 <Image src={ellipse} style={{ objectFit: 'cover', width: '100%', height: '500px', borderRadius: 24 }} />
             </Box>
+            
             <Box color='white' position='absolute' zIndex='1' top="50%" left={{base: '4%', lg: '10%'}}>
+                <Bounce>
                 <Heading fontSize={{base: 42, lg: 45}} lineHeight={{base: '70px', lg: '80px'}}>We strive to create a space that fosters collaboration</Heading>
+                </Bounce>
             </Box>
+            
         </Box>
     )
 }
@@ -42,6 +49,7 @@ export const Pattern = () => {
 export const HeroImage = () => {
     return (
         <Box py='5' px={{ base: 2, lg: '10' }} w={{base: '100%', lg: '50%'}}>
+            <Zoom>
             <Swiper 
                 spaceBetween={30} 
                 centeredSlides={true}
@@ -56,6 +64,7 @@ export const HeroImage = () => {
                 <SwiperSlide><Image src={image1} alt="" style={{ borderRadius: "24px", objectFit: "cover", height: "500px", width: '500px' }} /></SwiperSlide>
                 <SwiperSlide><Image src={image2} alt="" style={{ borderRadius: "24px", objectFit: "cover", height: "500px", width: '500px' }} /></SwiperSlide>
             </Swiper>
+            </Zoom>
         </Box>
     )
 }

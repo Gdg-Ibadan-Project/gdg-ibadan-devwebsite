@@ -1,16 +1,19 @@
-import { Box, Image, Text, Input, Button, Stack, Heading, Select } from '@chakra-ui/react'
+import { Box, Image, Text, Input, Stack, Heading, Select } from '@chakra-ui/react'
 import React from 'react'
 import bgImage from '../../../assets/hero-bg.svg'
 import location from '../../../assets/location.svg'
 import { Search2Icon } from '@chakra-ui/icons'
+import {Zoom, Fade, Slide, Bounce} from 'react-reveal'
+import Button from '../../../components/Button'
 
 const Hero = () => {
   return (
+    <Zoom>
     <Box 
         w='90%' 
         mx='auto' 
         bg='#E9ECED' 
-        h={['700px', 'auto', '500px']} 
+        h={['700px', 'auto', '520px']} 
         my='7'
         borderRadius='24px' 
         backgroundImage={bgImage} 
@@ -19,12 +22,17 @@ const Hero = () => {
         backgroundSize='contain'
         position='relative'
     >
-        <HeadingText />
-        <FilterInputs/>
-        <Box w='80%' position='absolute' mx='auto' inset='0' top={['600px', '430px']}>
-            <Text color='#6A7C88'>Popular: UI Designer , UX Researcher, Andriod, Admin</Text>
+                  <Bounce><HeadingText /></Bounce>
+                  <Slide top>
+                      <FilterInputs />
+                  </Slide>
+                  <Slide left>
+                      <Box w='80%' position='absolute' mx='auto' inset='0' top={['600px', '430px']}>
+                          <Text color='#6A7C88'>Popular: UI Designer , UX Researcher, Andriod, Admin</Text>
+                      </Box>
+                  </Slide>
         </Box>
-    </Box> 
+    </Zoom>
   )
 }
 
@@ -69,7 +77,8 @@ export const FilterInputs = () => {
                     </Stack>
                 </Box>
                 <Box w={['100%', '50%', '20%']}>
-                    <Button bg='#E05D2F' w='100%' color='white' fontWeight='medium' fontSize={15}>Search</Button>
+                    <Button width='100%' height='45px' text='Search' />
+                    {/* <Button bg='#E05D2F' w='100%' color='white' fontWeight='medium' fontSize={15}>Search</Button> */}
                 </Box>
             </Stack>
         </Box>

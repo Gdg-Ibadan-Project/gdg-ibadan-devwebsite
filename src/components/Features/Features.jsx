@@ -2,14 +2,16 @@ import React from 'react'
 import Cards from '../cards'
 import { Box, Stack, Heading, Text } from '@chakra-ui/react'
 import Line from '../../assets/Line.png'
+import {Bounce, Slide, Zoom} from 'react-reveal'
 
 const Features = () => {
   return (
+    <Bounce>
     <Box w='90%' mx='auto' p={[5, 6, 8]} bg='#1E3747' borderRadius='24px' bgImage={Line} backgroundRepeat='no-repeat' >
 
       <Box textAlign='center' mt='12' mb='14' color='white'>
-        <Heading fontSize={45} mb='8'>Features</Heading>
-        <Text fontSize={22}>Fostering collaboration and learning among tech of all enthusiasts level</Text>
+        <Slide top><Heading fontSize={45} mb='8'>Features</Heading></Slide>
+        <Zoom><Text fontSize={22}>Fostering collaboration and learning among tech of all enthusiasts level</Text></Zoom>
       </Box>
 
       <Stack alignItems='center' spacing={[7, 5, 0]} direction={['column', 'column', 'row']} justifyContent='space-between'>
@@ -52,6 +54,7 @@ const Features = () => {
         />
       </Stack>
     </Box>
+    </Bounce>
   )
 }
 
