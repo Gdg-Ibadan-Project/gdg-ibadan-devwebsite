@@ -7,10 +7,8 @@ import Altschool from "../../assets/Altschool.png";
 import Heyfood from "../../assets/heyfood.png";
 import Halal from "../../assets/halal.png";
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
 
 const Sponsors = () => {
-  
 
   return (
     <Box mb='12' w='100%' mx='auto'>

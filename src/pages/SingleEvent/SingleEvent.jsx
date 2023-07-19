@@ -1,7 +1,6 @@
 "use client";
 import {
   Box,
-  Button,
   Center,
   Flex,
   Heading,
@@ -22,6 +21,17 @@ import GalleryImage3 from '../../assets/gallery-image3.png'
 import twitter from '../../assets/twitter-bold-icon.svg'
 import linkedin from '../../assets/linkedin-logo.svg'
 import {Whatsapp, Facebook} from 'iconsax-react'
+import carousel1 from "../../assets/gdg-header.jpg";
+import carousel2 from "../../assets/carousel-image2.jpg";
+import carousel3 from "../../assets/carousel-image3.jpg";
+import carousel4 from "../../assets/carousel-image4.jpg";
+import carousel5 from "../../assets/carousel-image5.jpg";
+import carousel6 from "../../assets/carousel-image6.jpg";
+import carousel7 from "../../assets/carousel-image7.jpg";
+import carousel8 from "../../assets/carousel-image8.jpg";
+import {Fade, Zoom, Bounce, Slide, Roll} from 'react-reveal'
+import Jump from 'react-reveal/Jump'
+import Button from '../../components/Button'
 
 const SingleEvent = () => {
 
@@ -70,22 +80,26 @@ export const EventHeaderImage = () => {
 
         <Box>
           <Flex gap={3} flexWrap={['wrap-reverse', 'nowrap']}>
-            <Image src={Calendar} objectFit='cover' alt={""} w='100%' h={['320px', '500px']} />
+            <Zoom>
+              <Image src={Calendar} objectFit='cover' alt={""} w='100%' h={['320px', '500px']} />
+            </Zoom>
 
             <Box w='200px' mb='5'>
-              <Text w={['auto', '180px']} mb='2' fontSize={[18, 16]}>Share event with friends</Text>
-              <Stack fontSize={25} direction={['row', 'column']} spacing={5}>
-                <Box>
-                  <Stack direction='column' spacing={2}>
-                    <Icon as={Whatsapp} variant='Bold'  />
-                    <Icon as={Facebook} variant='Bold' />
-                  </Stack>
-                </Box>
-                <Box>
-                   <Image src={twitter} w='25px' mb='2' />
+              <Fade top>
+                <Text w={['auto', '180px']} mb='2' fontSize={[18, 16]}>Share event with friends</Text>
+                <Stack fontSize={25} direction={['row', 'column']} spacing={5}>
+                  <Box>
+                    <Stack direction='column' spacing={2}>
+                      <Icon as={Whatsapp} variant='Bold' />
+                      <Icon as={Facebook} variant='Bold' />
+                    </Stack>
+                  </Box>
+                  <Box>
+                    <Image src={twitter} w='25px' mb='2' />
                     <Image src={linkedin} w='27px' />
-                </Box>
-              </Stack>
+                  </Box>
+                </Stack>
+              </Fade>
             </Box>
 
           </Flex>
@@ -105,28 +119,34 @@ export const EventDetails = () => {
       <Flex w='100%' justifyContent={['center', 'space-between']} flexWrap='wrap-reverse'>
         <Box w={['100%', '60%', '60%']} mt={['250px', '0', '0']}>
           <Box mb='14'>
-            <Heading fontWeight="500" fontSize="50px" lineHeight="64px" color="#E05D2F">Dare To Be</Heading>
+              <Bounce><Heading fontWeight="500" fontSize="50px" lineHeight="64px" color="#E05D2F">Dare To Be</Heading></Bounce>
           </Box>
 
           <Box mb='14'>
-            <Heading mb='3' fontWeight='medium' fontSize='28px' color='#1E3747'>Date and Time</Heading>
-            <Text color='#6A7C88'>Fri, Jun 16, 2023, 9:00 AM – Sat, Jun 17, 2023, 4:00 PM WAT</Text>
+            <Slide top>
+                <Heading mb='3' fontWeight='medium' fontSize='28px' color='#1E3747'>Date and Time</Heading>
+                <Text color='#6A7C88'>Fri, Jun 16, 2023, 9:00 AM – Sat, Jun 17, 2023, 4:00 PM WAT</Text>
+            </Slide>
           </Box>
 
-          <Box mb='14'>
-            <Heading mb='3' fontWeight='medium' fontSize='28px' color='#1E3747'>About Event</Heading>
-            <Text color='#6A7C88' lineHeight={8}>
-              International Women’s Day (IWD) is Women Techmakers’ largest annual event campaign where Ambassador host events all around the world during the months of March and April in celebration of this moment.
-              From big summits to smaller, intimate gatherings, IWD is a time to host events that create connections, educate and inspire your tech community. IWD is also a way in which we support our mission of building a world where all women thrive in tech.
-            </Text>
+          <Box mb='14' overflow='hidden'>
+            <Jump>
+                <Heading mb='3' fontWeight='medium' fontSize='28px' color='#1E3747'>About Event</Heading>
+            </Jump>
+            <Fade top>
+                <Text color='#6A7C88' lineHeight={8}>
+                  International Women’s Day (IWD) is Women Techmakers’ largest annual event campaign where Ambassador host events all around the world during the months of March and April in celebration of this moment.
+                  From big summits to smaller, intimate gatherings, IWD is a time to host events that create connections, educate and inspire your tech community. IWD is also a way in which we support our mission of building a world where all women thrive in tech.
+                </Text>
+            </Fade>
           </Box>
 
           <Box mb='16'>
             <Heading mb='3' fontWeight='medium' fontSize='28px' color='#1E3747'>Tags</Heading>
-            <Box>
-              <Button color='#8f8f8f' bg='#f1f1f1' h='45px' mr='3'>Ibadan Events</Button>
-              <Button color='#8f8f8f' bg='#f1f1f1' h='45px'>IWD</Button>
-            </Box>
+            <Flex gap={2}>
+              <Text color='#8f8f8f' bg='#f1f1f1' px='4' py='3' w='150px' textAlign='center' borderRadius={5}>Ibadan Events</Text>
+              <Text color='#8f8f8f' bg='#f1f1f1' px='4' py='3' w='100px' textAlign='center' borderRadius={5}>IWD</Text>
+            </Flex>
           </Box>
         </Box>
 
@@ -136,7 +156,7 @@ export const EventDetails = () => {
           <Box position='relative' >
               <Box position='absolute' w='345px' top='0' bg='white' inset='0' mx='auto' h='180px' boxShadow='xl' borderRadius={5} zIndex='1' py='10'>
                 <Text mb='7' color='#1E3747' fontWeight='medium' fontSize={18}>It's free for everyone</Text>
-                <Button bg='#E05D2F' color='white'>Register Now</Button>
+                <Button text='Register Now' />
               </Box>
               <Box position='absolute' w='305px' left='20px' bg='white' mx='auto' top='20px' boxShadow='xl' h='180px' zIndex='-1' borderRadius={5}></Box>
               <Box position='absolute' mx='auto' left='35px' bg='white' w='275px' top='40px' boxShadow='lg' h='180px' zIndex='-2' borderRadius={5}></Box>
@@ -157,7 +177,7 @@ export const EventSchedule = () => {
         <Box mb='7'>
           <Flex justifyContent='space-between' alignItems='center' flexWrap='wrap'>
             <Heading fontSize='32px' fontWeight='medium' mb='5'>Event Schedule</Heading>
-            <Button bg='#E05D2F' color='white' fontWeight='medium' h='50px'>Add to Calendar</Button>
+            <Button height='50px' text='Add to Calendar' width='170px' />
           </Flex>
         </Box>
 
@@ -180,28 +200,28 @@ export const PhotoCollage = () => {
       <Box w='85%' mx='auto' minH='985px' mb='20'>
         <Box mb='8'><Heading color='#1E3747' fontSize={32} fontWeight='medium'>Photo collage</Heading></Box>
         <Stack direction={['column', 'row']} justifyContent='space-between'>
-          <Box maxW='378px' h='100%'>
+          <Box maxW={['100%', '35%']} h='100%'>
             <Stack>
-              <Image src={GalleryImage} w='100%' h='212px' objectFit='cover' />
-              <Image src={GalleryImage2} w='100%' h='599px' objectFit='cover' />
-              <Image src={GalleryImage} w='100%' h='183px' objectFit='cover' />
+              <Fade top><Image src={carousel1} w='100%' h='212px' objectFit='cover' /></Fade>
+              <Zoom><Image src={carousel2} w='100%' h='599px' objectFit='cover' /></Zoom>
+              <Fade bottom><Image src={carousel3} w='100%' h='183px' objectFit='cover' /></Fade>
             </Stack>
           </Box>
-          <Box maxW='798px' h='100%'>
+          <Box maxW={['100%', '65%']} h='100%'>
             <Stack direction='column' justifyContent='space-between'>
-                <Image src={GalleryImage3} w='100%' h='336px' objectFit='cover' />
+                <Bounce><Image src={carousel4} w='100%' h='336px' objectFit='cover' /></Bounce>
                 <Stack direction='row' w='100%' h='100%'>
-                  <Box>
+                  <Box overflow='hidden'>
                     <Stack direction='column' justifyContent='space-between'>
-                      <Image src={GalleryImage} w='100%' h='212px' objectFit='cover' />
-                      <Image src={GalleryImage2} w='100%' h='444px' objectFit='cover' />
+                      <Fade top><Image src={carousel5} w='100%' h='212px' objectFit='cover' /></Fade>
+                      <Zoom><Image src={carousel6} w='100%' h='444px' objectFit='cover' /></Zoom>
                     </Stack>
                   </Box>
-                  <Box>
+                  <Box overflow='hidden'>
                     <Stack direction='column' justifyContent='space-between'>
-                      <Image src={GalleryImage} w='100%' h='212px' objectFit='cover' />
-                      <Image src={GalleryImage} w='100%' h='216px' objectFit='cover' />
-                      <Image src={GalleryImage} w='100%' h='216px' objectFit='cover' />
+                      <Slide right><Image src={carousel7} w='100%' h='212px' objectFit='cover' /></Slide>
+                      <Slide right><Image src={carousel8} w='100%' h='216px' objectFit='cover' /></Slide>
+                      <Fade bottom><Image src={GalleryImage} w='100%' h='216px' objectFit='cover' /></Fade>
                     </Stack>
                   </Box>
                 </Stack>
@@ -220,71 +240,79 @@ export const EventScheduleCard = ({bg}) => {
         <Stack direction={['column', 'row', 'row']} justifyContent='space-between' alignItems={['flex-start', 'center']}>
           <Stack direction='column' spacing={10} justifyContent='space-between' w='800px' mb='7'>
 
-            <Box w='100%'>
-              <Stack justifyContent='space-between' direction={['column', 'row']}>
-                <Box>
-                  <Text>8:00AM - 9:00AM</Text>
-                </Box>
+            <Box w='100%' overflow='hidden'>
+              <Fade top>
+                <Stack justifyContent='space-between' direction={['column', 'row']}>
+                  <Box>
+                    <Text>8:00AM - 9:00AM</Text>
+                  </Box>
 
-                <Box>
-                  <Text>Hall A</Text>
-                </Box>
+                  <Box>
+                    <Text>Hall A</Text>
+                  </Box>
 
-                <Box fontWeight='medium'>
-                  <Text>Welcome Address</Text>
-                </Box>
+                  <Box fontWeight='medium'>
+                    <Text>Welcome Address</Text>
+                  </Box>
 
-                <Box w='340px'>
-                  <Text>Adeyinka Adeyemi CEO,Intermarc Consulting</Text>
-                </Box>
-              </Stack>
+                  <Box w={['300px', '340px']}>
+                    <Text>Adeyinka Adeyemi CEO,Intermarc Consulting</Text>
+                  </Box>
+                </Stack>
+              </Fade>
             </Box>
 
 
-            <Box w='100%'>
-              <Stack justifyContent='space-between' direction={['column', 'row']}>
-                <Box>
-                  <Text>8:00AM - 9:00AM</Text>
-                </Box>
+            <Box w='100%' overflow='hidden'>
+              <Zoom>
+                <Stack justifyContent='space-between' direction={['column', 'row']}>
+                  <Box>
+                    <Text>8:00AM - 9:00AM</Text>
+                  </Box>
 
-                <Box>
-                  <Text>Hall A</Text>
-                </Box>
+                  <Box>
+                    <Text>Hall A</Text>
+                  </Box>
 
-                <Box fontWeight='medium'>
-                  <Text>Welcome Address</Text>
-                </Box>
+                  <Box fontWeight='medium'>
+                    <Text>Welcome Address</Text>
+                  </Box>
 
-                <Box w='340px'>
-                  <Text>Adeyinka Adeyemi CEO,Intermarc Consulting</Text>
-                </Box>
-              </Stack>
+                  <Box w={['300px', '340px']}>
+                    <Text>Adeyinka Adeyemi CEO,Intermarc Consulting</Text>
+                  </Box>
+                </Stack>
+              </Zoom>
             </Box>
 
-            <Box w='100%'>
-              <Stack justifyContent='space-between' direction={['column', 'row']}>
-                <Box>
-                  <Text>8:00AM - 9:00AM</Text>
-                </Box>
+            <Box w='100%' overflow='hidden'>
+              <Fade bottom>
+                <Stack justifyContent='space-between' direction={['column', 'row']}>
+                  <Box>
+                    <Text>8:00AM - 9:00AM</Text>
+                  </Box>
 
-                <Box>
-                  <Text>Hall A</Text>
-                </Box>
+                  <Box>
+                    <Text>Hall A</Text>
+                  </Box>
 
-                <Box fontWeight='medium'>
-                  <Text>Welcome Address</Text>
-                </Box>
+                  <Box fontWeight='medium'>
+                    <Text>Welcome Address</Text>
+                  </Box>
 
-                <Box w='340px'>
-                  <Text>Adeyinka Adeyemi CEO,Intermarc Consulting</Text>
-                </Box>
-              </Stack>
+                  <Box w={['300px', '340px']}>
+                    <Text>Adeyinka Adeyemi CEO,Intermarc Consulting</Text>
+                  </Box>
+                </Stack>
+              </Fade>
             </Box>
 
           </Stack>
 
           <Box maxW='365px' h='265px'>
-            <Image src={Presenter} w='100%' objectFit='cover' borderRadius='24px' />
+            <Bounce>
+              <Image src={Presenter} w='100%' objectFit='cover' borderRadius='24px' />
+            </Bounce>
           </Box>
         </Stack>
       </Box>

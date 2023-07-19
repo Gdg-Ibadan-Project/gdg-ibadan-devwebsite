@@ -26,7 +26,7 @@ const Organisers = () => {
         <Heading
           textAlign="center"
           fontSize={{ base: "32px", lg: "45px" }}
-          lineHeight={{ base: "40px", lg: "57px" }}
+          lineHeight={{ base: "45px", lg: "57px" }}
           fontWeight="500"
           pt={{ base: "61px", lg: "93px" }}
           mb='20'
@@ -87,7 +87,7 @@ export const OrganizerCard = ({role, name, image}) => {
           <Box position='absolute' top='180px' left='-80px'>
             <Image src={Rec} w='310px' h='180px' />
           </Box>
-          <Box position='absolute' zIndex='1' bottom='-25px' textAlign='left'>
+          <Box position='absolute' zIndex='1' bottom='-25px' textAlign='left' overflow='hidden'>
             <Jump><Heading fontWeight='medium' fontSize='17px' mb='1' color='#E05D2F'>{role}</Heading></Jump>
             <Slide left><Text color='#1E3747' fontSize={14.5} fontWeight='medium'>{name}</Text></Slide>
           </Box>
