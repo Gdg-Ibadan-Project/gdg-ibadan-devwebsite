@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -26,8 +26,29 @@ import Design2 from "../../assets/Frame 1000004323 (1).png";
 import Design3 from "../../assets/Image.png";
 import { Fade, Zoom, Slide, Bounce, } from 'react-reveal'
 import Jump from 'react-reveal/Jump'
+import axios from 'axios'
 
 const Blog = () => {
+  const url = `https://techcrunch.com/wp-json/wp/v2/posts?per_page=30&context=embed`
+  const [posts, setPosts] = useState([]);
+  const [recentPosts, setRecentPosts] = useState([]);
+
+  const getPosts = async() => {
+    try {
+      const res = await axios.get(url);
+      const data = await res.data;
+      setPosts(data);
+      setRecentPosts(data?.slice(0,3));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getPosts();
+  }, [])
+
+  // console.log(posts);
 
   return (
     <>
@@ -87,13 +108,7 @@ const Blog = () => {
         direction={{ base: 'column-reverse', lg: 'row' }}
       >
         <Box my={{ base: '10', lg: 0 }} w={{ base: '100%', lg: '65%' }}>
-          <SinglePost />
-          <SinglePost />
-          <SinglePost />
-          <SinglePost />
-          <SinglePost />
-          <SinglePost />
-          <SinglePost />
+          {posts.map((item) => <SinglePost tag={item?.primary_category.name} image={item?.jetpack_featured_media_url} title={item?.title.rendered} date={new Date(item?.date).toDateString()} link={item?.shortlink} />)}
         </Box>
 
         <Box mb='8' w={{ base: '100%', lg: '28%' }}>
@@ -312,17 +327,20 @@ export default Blog;
 
 
 
-export const SinglePost = () => {
+export const SinglePost = ({title, image, tag, date, link}) => {
 
   return (
-    <Box w='100%' mb='16'>
+    <a href={link} target='_blank'>
+    <Box w='100%' mb='16' overflow='hidden'>
       <Stack direction={{ base: 'column', lg: 'row' }} justifyContent='space-between' alignItems={{ base: 'flex-start', lg: 'center' }}>
         <Box w={{ base: '100%', lg: '65%' }} mb='4'>
           <Fade top>
-            <Box bg='#FCEFEA' py='1.5' px='3.5' borderRadius='85px' w='100px'><Text color='#E05D2F' fontSize={14} fontWeight='medium'>QA Testing</Text></Box>
+            <Box bg='#FCEFEA' py='1.5' px='3.5' borderRadius='85px' w='150px' textAlign='center'>
+              <Text color='#E05D2F' fontSize={14} fontWeight='medium' dangerouslySetInnerHTML={{ __html: tag }} />
+            </Box>
           </Fade>
           <Slide left>
-            <Heading my='3.5' fontSize={22} color='#1E3747'>The Best Productivity Apps for 2021 - Updated List</Heading>
+            <Heading my='3.5' fontSize={22} color='#1E3747' dangerouslySetInnerHTML={{ __html: title }} />
           </Slide>
           <Bounce>
             <Box w='100%' border='1px dashed #BAC3C8' my='3'></Box>
@@ -330,10 +348,10 @@ export const SinglePost = () => {
 
          <Bounce>
             <Stack direction='row' alignItems='center' gap={2}>
-              <Text color='#6A7C88' fontSize={14}>May 02, 2022</Text>
+              <Text color='#6A7C88' fontSize={14}>{date}</Text>
 
               <Box w='6.5px' h='6.5px' borderRadius='50%' bg='#E05D2F'></Box>
-              <Text color='#6A7C88' fontSize={14}>Nattasha</Text>
+              <Text color='#6A7C88' fontSize={14}>Techcrunch</Text>
             </Stack>
          </Bounce>
 
@@ -342,7 +360,7 @@ export const SinglePost = () => {
         <Box w={{ base: '80%', lg: '30%' }}>
           <Zoom>
           <Image
-            src={Design3}
+            src={image}
             alt="Your Image"
             style={{ objectFit: 'cover', borderRadius: 10 }}
             height='155px'
@@ -353,5 +371,6 @@ export const SinglePost = () => {
 
       </Stack>
     </Box>
+    </a>
   )
 }
