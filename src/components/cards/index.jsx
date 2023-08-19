@@ -2,13 +2,11 @@
 import React from "react";
 import { Box, Card, Heading, Text, Image } from "@chakra-ui/react";
 import Access from "../../assets/access.png";
-import Jump from 'react-reveal/Jump';
-import {Slide, Bounce, Zoom} from 'react-reveal'
 
 export default function Cards({ hText, paragraph, background, color, mb, hoverBg, top, bottom, left, right, angle }) {
   return (
     <>
-      <Zoom>
+      
       <Card
         width={{ base: "100%px", md: '250px', lg: "26                         0px" }}
         height={{ base: '300px', lg: "277px" }}
@@ -28,7 +26,7 @@ export default function Cards({ hText, paragraph, background, color, mb, hoverBg
         <Box
         p='6'
         >
-          <Slide top>
+          
               <Image
                 src={Access}
                 alt={""}
@@ -38,8 +36,8 @@ export default function Cards({ hText, paragraph, background, color, mb, hoverBg
                   paddingBottom: "16px",
                 }}
               />
-          </Slide>
-            <Jump> 
+          
+            
               <Heading
               as="h1"
               fontSize="16px"
@@ -49,8 +47,7 @@ export default function Cards({ hText, paragraph, background, color, mb, hoverBg
             >
               {hText}
             </Heading>
-            </Jump>
-         <Jump>
+            
               <Text
                 as="p"
                 fontSize={{ base: '19px', lg: '16px' }}
@@ -60,10 +57,9 @@ export default function Cards({ hText, paragraph, background, color, mb, hoverBg
               >
                 {paragraph}
               </Text>
-         </Jump>
+         
         </Box>
       </Card>
-      </Zoom>
     </>
   );
 }

@@ -9,7 +9,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
-import { Zoom, Bounce } from 'react-reveal'
 
 
 const Hero = () => {
@@ -37,11 +36,11 @@ export const Pattern = () => {
             </Box>
 
             <Box color='white' position='absolute' zIndex='1' top={['10%', '20%']} left={{ base: '4%', lg: '10%' }} p={[2,0]}>
-                <Bounce>
+                
                     <Heading fontSize={{ base: 32, lg: 45 }} lineHeight={{ base: '70px', lg: '80px' }} fontWeight='medium'>
                         Welcome to GDG Ibadan website, where tech enthusiasts gather to share ideas and knowledge.
                     </Heading>
-                </Bounce>
+                
             </Box>
 
         </Box>
@@ -51,7 +50,7 @@ export const Pattern = () => {
 export const HeroImage = () => {
     return (
         <Box py='5' px={{ base: 2, lg: '10' }} w={{ base: '100%', lg: '50%' }}>
-            <Zoom>
+            
                 <Swiper
                     spaceBetween={30}
                     centeredSlides={true}
@@ -66,7 +65,7 @@ export const HeroImage = () => {
                     <SwiperSlide><Image src={image1} alt="" style={{ borderRadius: "24px", objectFit: "cover", height: "500px", width: '500px' }} /></SwiperSlide>
                     <SwiperSlide><Image src={image2} alt="" style={{ borderRadius: "24px", objectFit: "cover", height: "500px", width: '500px' }} /></SwiperSlide>
                 </Swiper>
-            </Zoom>
+            
         </Box>
     )
 }
