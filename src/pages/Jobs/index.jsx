@@ -8,8 +8,10 @@ import axios from 'axios'
 const index = () => {
   const [jobs, setJobs] = useState([]);
 
+  const corsProxyUrl = 'https://cors-anywhere.herokuapp.com/';
+
   const getJobs = async () => {
-    const url = `https://findwork.dev/api/jobs/`
+    const url = `${corsProxyUrl}https://findwork.dev/api/jobs/`
     const token = '82129fb1c2a18bc72a949b595fd961125f213091'
     try {
       const response = await axios.get(url, {

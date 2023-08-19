@@ -5,7 +5,7 @@ import Access from "../../assets/access.png";
 import Jump from 'react-reveal/Jump';
 import {Slide, Bounce, Zoom} from 'react-reveal'
 
-export default function Cards({ hText, paragraph, background, color, mb, hoverBg }) {
+export default function Cards({ hText, paragraph, background, color, mb, hoverBg, top, bottom, left, right, angle }) {
   return (
     <>
       <Zoom>
@@ -18,6 +18,12 @@ export default function Cards({ hText, paragraph, background, color, mb, hoverBg
         fontFamily="'Google Sans Display', sans-serif"
         boxShadow="md"
         _hover={{ bg: hoverBg, color: '#303030'}}
+        transform={`rotate(${angle}deg)`}
+        position='absolute'
+        top={top}
+        bottom={bottom}
+        left={left}
+        right={right}
       >
         <Box
         p='6'
