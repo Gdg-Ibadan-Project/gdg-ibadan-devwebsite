@@ -41,13 +41,13 @@ export default JobCard
 export const Card = () => {
   return (
   <Slide top>
-  <Box w='100%' p={[3, 4]} border='1px solid lightgray' borderRadius={12} mb='7' h='auto'>
+  <Box w='100%' p={[3, 4]} border='1px solid lightgray' borderRadius={12} mb='7' h='auto' overflow='hidden'>
       <Stack direction={['column', 'row']} justifyContent='space-between' alignItems={['flex-start', 'center']}>
         <Box w={['20%', '10%']}>
           <Image src={JobIcon} w='50px' h='50px' />
         </Box>
 
-        <Box w={['100%', '92%']} mx='auto'>
+        <Box w={['100%', '92%']} mx='auto' overflow='hidden'>
           <Stack direction={['column', 'row']} w='100%' justifyContent={['center', 'space-between']}>
             <Box mb={[3, 0]}>
               <Stack direction='column' spacing={5}>
@@ -71,7 +71,7 @@ export const Card = () => {
               </Stack>
             </Box>
 
-            <Box>
+            <Box overflow='hidden'> 
               <Stack direction={['row', 'column']} h='100%' justifyContent='space-between' alignItems='center'>
                 <Zoom>
                   <Button bg='#E05D2F' w='105px' color='white' fontSize={14} boxShadow='md'>Apply</Button>
