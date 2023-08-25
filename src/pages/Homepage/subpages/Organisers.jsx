@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 // import Buttons from "../buttons";
 import Rec from "../../../assets/Rectangle 9789.png"
 // import Button from '../Button'
+import '../index.css'
 
 const Organisers = () => {
 
@@ -33,6 +34,7 @@ const Organisers = () => {
                         fontWeight="500"
                         pt={{ base: "61px", lg: "93px" }}
                         mb='20'
+                        id="title"
                     >
                         Let’s Meet the Organisers
                     </Heading>
@@ -53,8 +55,8 @@ const Organisers = () => {
                                 <Image src={Rec} w='330px' h='180px' />
                             </Box>
                             <Box position='absolute' zIndex='1' bottom='-25px' textAlign='left'>
-                                <Heading fontWeight='medium' fontSize='17px' mb='1' color='#E05D2F'>WTM Ibadan Co-Lead</Heading>
-                                <Text color='#1E3747' fontSize={14.5} fontWeight='medium'>Wuraola Akinlade</Text>
+                                <Heading fontWeight='medium' fontSize='17px' mb='1' color='#E05D2F' id='title'>WTM Ibadan Co-Lead</Heading>
+                                <Text color='#1E3747' fontSize={14.5} fontWeight='medium' className="text">Wuraola Akinlade</Text>
                             </Box>
                         </Box>
 
@@ -77,8 +79,8 @@ export const OrganizerCard = ({ role, name, image }) => {
                         <Image src={Rec} w='310px' h='180px' />
                     </Box>
                     <Box position='absolute' zIndex='1' bottom='-25px' textAlign='left' overflow='hidden'>
-                        <Heading fontWeight='medium' fontSize='17px' mb='1' color='#E05D2F'>{role}</Heading>
-                        <Text color='#1E3747' fontSize={14.5} fontWeight='medium'>{name}</Text>
+                        <Heading fontWeight='medium' fontSize='17px' mb='1' color='#E05D2F' id="title">{role}</Heading>
+                        <Text color='#1E3747' fontSize={14.5} fontWeight='medium' className="text">{name}</Text>
                     </Box>
                 </Box>
             </Box>
