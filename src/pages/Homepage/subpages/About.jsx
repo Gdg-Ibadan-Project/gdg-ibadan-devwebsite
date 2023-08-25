@@ -1,6 +1,7 @@
 import React from 'react'
 import {Box, Flex, Text, UnorderedList, ListItem, Image, Heading} from '@chakra-ui/react'
 import AboutImg from "../../../assets/about-img.png";
+import '../index.css'
 
 const About = () => {
   return (
@@ -25,6 +26,7 @@ const About = () => {
                       fontSize={{ base: "32px", lg: "47px" }}
                       lineHeight={{ base: "40px", lg: "57px" }}
                       pb="38px"
+                      id='title'
                   >
                       About Us
                   </Heading>
@@ -35,6 +37,7 @@ const About = () => {
                       columnGap="37px"
                       display="flex"
                       mb='5'
+                      className='text'
                   >
                       <ListItem color="#0F9D58">Connect</ListItem>
                       <ListItem color="#4285F4">Learn</ListItem>
@@ -47,6 +50,7 @@ const About = () => {
                   fontWeight="normal"
                   lineHeight="35px"
                   mb='7'
+                  className='text'
                   // width={{ base: "302px", lg: "367px" }}
                   w={['100%', '100%']}
                   as="p"

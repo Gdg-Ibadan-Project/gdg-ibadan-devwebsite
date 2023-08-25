@@ -7,17 +7,18 @@ import Altschool from "../../../assets/Altschool.png";
 import Heyfood from "../../../assets/heyfood.png";
 import Halal from "../../../assets/halal.png";
 import { useEffect, useRef } from "react";
+import '../index.css'
 
 const Sponsors = () => {
 
     return (
-        <Box mb='12' w={['90%', '70%']} mx='auto'>
+        <Box mb='12' w={['95%', '75%']} mx='auto'>
             <Center
                 fontSize={{ base: "32px", lg: "45px" }}
                 fontWeight="500"
-                // lineHeight={{ base: "40px", lg: "57px" }}
                 color='#1E3747'
                 mb='5'
+                id="title"
             >
                 Our Sponsors
             </Center>
@@ -30,8 +31,8 @@ const Sponsors = () => {
                 justifyContent='center' 
                 mx='auto'
                 w='100%'
-                h='101px'
-                // overflowX={['auto', 'none']}
+                h='auto'
+                overflow='auto'
             >
                 <Flex
                     alignItems="center"

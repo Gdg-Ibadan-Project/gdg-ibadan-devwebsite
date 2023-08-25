@@ -1,0 +1,18 @@
+@font-face {
+    font-family: recoleta-bold;
+    src: url('../../assets/recoleta/Recoleta-Medium.ttf');
+}
+
+@font-face {
+    font-family: recoleta-regular;
+    src: url('../../assets/recoleta/Recoleta-Regular.ttf');
+}
+
+#title{
+    font-family: recoleta-bold;
+}
+
+.text{
+    font-family: recoleta-regular;
+}
+

@@ -2,13 +2,14 @@
 import React from "react";
 import { Box, Card, Heading, Text, Image } from "@chakra-ui/react";
 import Access from "../../assets/access.png";
+import './index.css'
 
 export default function Cards({ hText, paragraph, background, color, mb, hoverBg, top, bottom, left, right, angle }) {
   return (
     <>
       
       <Card
-        width={{ base: "100%px", md: '250px', lg: "26                         0px" }}
+        width={{ base: "100%px", md: '250px', lg: "260px" }}
         height={{ base: '300px', lg: "277px" }}
         background={background}
         color="#fff"
@@ -16,17 +17,17 @@ export default function Cards({ hText, paragraph, background, color, mb, hoverBg
         fontFamily="'Google Sans Display', sans-serif"
         boxShadow="md"
         _hover={{ bg: hoverBg, color: '#303030'}}
-        transform={`rotate(${angle}deg)`}
-        position='absolute'
-        top={top}
-        bottom={bottom}
-        left={left}
+        transform={['0', '0', `rotate(${angle}deg)`]}
+        position={['static', 'absolute']}
+        top={['none', top]}
+        bottom={['none', bottom]}
+        left={['none', left]}
         right={right}
+        mb='7'
       >
         <Box
         p='6'
         >
-          
               <Image
                 src={Access}
                 alt={""}
@@ -36,7 +37,6 @@ export default function Cards({ hText, paragraph, background, color, mb, hoverBg
                   paddingBottom: "16px",
                 }}
               />
-          
             
               <Heading
               as="h1"
@@ -44,6 +44,7 @@ export default function Cards({ hText, paragraph, background, color, mb, hoverBg
               fontWeight="500"
               lineHeight="24px"
               pb="16px"
+              id="title"
             >
               {hText}
             </Heading>
@@ -51,9 +52,9 @@ export default function Cards({ hText, paragraph, background, color, mb, hoverBg
               <Text
                 as="p"
                 fontSize={{ base: '19px', lg: '16px' }}
-                fontWeight="400"
                 lineHeight="27px"
                 fontFamily="'Google Sans Display', sans-serif"
+                id="text"
               >
                 {paragraph}
               </Text>

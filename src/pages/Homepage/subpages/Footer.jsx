@@ -4,6 +4,7 @@ import logo from "../../../assets/gdg-logo.svg";
 import { Slack, Instagram } from 'iconsax-react';
 import {FaLinkedin, FaTwitterSquare, FaInstagramSquare} from 'react-icons/fa'
 import {AiFillSlackCircle} from 'react-icons/ai'
+import '../index.css'
 
 const Footer = () => {
   return (
@@ -14,7 +15,7 @@ const Footer = () => {
                       <Image src={logo} display='block' mx='auto' />
                   </Box>
                   <Box textAlign='center' px={[3,0]}>
-                      <Text color="#6A7C88" fontSize={18}>
+                      <Text color="#6A7C88" fontSize={18} className='text'>
                           We strive to create a space that fosters collaboration and learning among tech enthusiasts
                           of all levels. Whether you're a beginner or an expert, our community welcomes you.
                       </Text>
@@ -30,7 +31,7 @@ const Footer = () => {
                   </Box>
             </Stack>
         </Box>
-        <Box bg='#E05D2F' h='70px' color='white' textAlign='center' display='flex' alignItems='center' justifyContent='center'>
+        <Box className='text' bg='#E05D2F' h='70px' color='white' textAlign='center' display='flex' alignItems='center' justifyContent='center'>
             <Text>&copy; 2023 Ibadan devwebsite</Text>
         </Box>
     </Box>
